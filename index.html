@@ -65,7 +65,7 @@
         <div class="eyebrow">EXPLORE & GROW</div>
         <div class="section-heading">
             <h2>Opportunity for you</h2>
-            <a href="#" class="button"> Share an Opportunities + </a>
+            <a href="#" class="btn"> Share an Opportunities + </a>
         </div>
         <p class="list">Find your next learning or career milestone.</p>
     </section>
@@ -73,29 +73,157 @@
         <div class="search-box" <span>🔎</span><input id="searchInput" type="search"
                 placeholder="Search roles, skills, companies...."></div>
         <select id="catergories">
-            <option value="All categories"></option>
+            <option value="All">All catergories</option>
             <option>Internship</option>
             <option>Jobs</option>
             <option>Webinor</option>
             <option>Hackatons</option>
         </select>
         <select id="modes">
-            <option value="All modes"></option>
+            <option value="All">All modes</option>
+            <option>Remote</option>
             <option>Online</option>
             <option>Offline</option>
             <option>Hybrid</option>
         </select>
         <select id="levels">
-            <option value="All Levels"></option>
-            <option>Easy</option>
+            <option value="All">All levels</option>
+            <option>Beginner</option>
             <option>intermediate</option>
-            <option>Hard</option>
+            <option>Advanced</option>
         </select>
 
     </div>
+    <div class="chips" id="categoryChips">
+        <button class="chip active" data-category="All">All opportunities</button>
+        <button class="chip" data-category="Internship">Internships</button>
+        <button class="chip" data-category="Job">Jobs</button>
+        <button class="chip" data-category="Course">Courses</button>
+        <button class="chip" data-category="Certification">Certifications</button>
+    </div>
 
+    <section class="content-view hidden" id="postView">
+        <div class="section-heading">
+            <div>
+                <div class="eyebrow dark-eyebrow">GROW THE COMMUNITY</div>
+                <h2>Share an opportunity</h2>
+                <p>Found something useful? Help another student discover it.</p>
+            </div>
+        </div>
+        <div class="form-layout">
+            <form id="postForm" class="panel form-panel">
+                <div class="form-grid">
+                    <label class="full">Opportunity title<input required name="title"
+                            placeholder="e.g. Frontend Developer Internship" maxlength="90"></label>
+                    <label>Category<select required name="category">
+                            <option value="">Select category</option>
+                            <option>Internship</option>
+                            <option>Job</option>
+                            <option>Course</option>
+                            <option>Certification</option>
+                        </select></label>
+                    <label>Organization / Provider<input required name="company"
+                            placeholder="e.g. ABC Technologies"></label>
+                    <label>Mode<select name="mode">
+                            <option>Remote</option>
+                            <option>On-site</option>
+                            <option>Hybrid</option>
+                            <option>Self-paced</option>
+                        </select></label>
+                    <label>Level<select name="level">
+                            <option>Beginner</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                        </select></label>
+                    <label>Deadline<input name="deadline" type="date"></label>
+                    <label>Department / Skills<input name="skills" placeholder="e.g. CSE, Java, Python"></label>
+                    <label class="full">Short description<textarea required name="description" rows="4"
+                            placeholder="What will students learn or do? Include eligibility or key details."></textarea></label>
+                    <label class="full">Application / course link<input required name="link" type="url"
+                            placeholder="https://..."></label>
+                </div>
+                <div class="form-note">Student submissions will appear in the review queue before becoming public. Never
+                    share passwords or sensitive personal information.</div>
+                <button class="primary-btn" type="submit">Submit for review <span>→</span></button>
+                <p class="form-feedback" id="formFeedback" role="status"></p>
+            </form>
+            <aside class="panel tip-panel">
+                <div class="tip-symbol">✧</div>
+                <h3>Share responsibly</h3>
+                <p>Help keep Internova useful and trustworthy for everyone.</p>
+                <ul>
+                    <li>Check that the link works.</li>
+                    <li>Include accurate deadlines.</li>
+                    <li>Do not post requests for payment as job conditions.</li>
+                    <li>Share the original provider's details.</li>
+                </ul>
+            </aside>
+        </div>
+    </section>
 
+    <section class="content-view hidden" id="adminView">
+        <div class="section-heading">
+            <div>
+                <div class="eyebrow dark-eyebrow">COMMUNITY SAFETY</div>
+                <h2>Review queue</h2>
+                <p>Review student-submitted opportunities before publishing them.</p>
+            </div>
+        </div>
+        <div id="reviewList" class="review-list"></div>
+        <div class="empty-state hidden" id="reviewEmpty">
+            <div>✓</div>
+            <h3>You're all caught up</h3>
+            <p>There are no submissions waiting for review.</p>
+        </div>
+    </section>
 
+    <section class="content-view hidden" id="myPostsView">
+        <div class="section-heading">
+            <div>
+                <div class="eyebrow dark-eyebrow">YOUR CONTRIBUTIONS</div>
+                <h2>My submissions</h2>
+                <p>Check the review status of opportunities you've shared.</p>
+            </div>
+        </div>
+        <div id="myPostsList" class="review-list"></div>
+        <div class="empty-state hidden" id="myPostsEmpty">
+            <div>▤</div>
+            <h3>No submissions yet</h3>
+            <p>Share a useful opportunity with your college community.</p><button class="primary-btn"
+                id="emptyPostBtn">Share opportunity</button>
+        </div>
+    </section>
+
+    <section class="content-view hidden" id="savedView">
+        <div class="section-heading">
+            <div>
+                <div class="eyebrow dark-eyebrow">YOUR SHORTLIST</div>
+                <h2>Saved opportunities</h2>
+                <p>Keep interesting opportunities together in one place.</p>
+            </div>
+        </div>
+        <div class="opportunity-grid" id="savedGrid"></div>
+        <div class="empty-state hidden" id="savedEmpty">
+            <div>♡</div>
+            <h3>Nothing saved yet</h3>
+            <p>Tap the bookmark icon on an opportunity to save it here.</p>
+        </div>
+    </section>
+
+    <footer class="footer"><span class="footer-brand">✦ internova.</span><span>Discover opportunities. Build skills.
+            Shape your future.</span><span>© 2026 Internova</span></footer>
+    </section>
+    </main>
+    </div>
+
+    <div class="modal-backdrop hidden" id="detailModal">
+        <div class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="script.js"></script>
 </body>
 
 </html>
